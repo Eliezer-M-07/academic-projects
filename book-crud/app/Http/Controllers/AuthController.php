@@ -37,7 +37,7 @@ class AuthController extends Controller
     {
         if(!Auth::attempt($request->validated()))
         {
-            return redirect()->route('login')->withErrors(['email' => 'Credenciais inválidas.']);
+            return redirect()->route('login')->withErrors(['email' => 'Credenciais inválidas.'])->withInput($request->only('email'));
         }
 
         $request->session()->regenerate();
