@@ -5,7 +5,7 @@
 
 # Academic Projects
 
-Repositório destinado à organização de projetos desenvolvidos durante minha graduação em **Ciência da Computação**.
+Repositório destinado à organização de projetos desenvolvidos durante minha formação em **Análise e Desenvolvimento de Sistemas**.
 
 Os projetos foram desenvolvidos como trabalhos e atividades acadêmicas, abrangendo diferentes disciplinas, tecnologias e conceitos de desenvolvimento de software.
 
