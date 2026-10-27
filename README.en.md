@@ -5,7 +5,7 @@
 
 # Academic Projects
 
-Repository created to organize projects developed throughout my **Computer Science degree**.
+Repository created to organize projects developed throughout my **Systems Analysis and Development degree**.
 
 The projects were developed as academic assignments and activities, covering different subjects, technologies, and software development concepts.
 
