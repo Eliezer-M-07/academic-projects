@@ -132,37 +132,70 @@ public/
 
 app.js
 server.js
-trabalho3.sql
 ```
 
 ---
 
 ## Database
 
-The [`trabalho3.sql`](trabalho3.sql) file creates the tables and inserts the initial recipe categories. Create the database before running the script.
+The application uses MySQL. The SQL block below defines the required tables and inserts the initial categories. The application expects this schema to exist and does not create or synchronize it automatically.
 
-### Tables
+### Database schema SQL
 
-```text
-users
-├── id        INT, primary key
-├── name      VARCHAR(100), not null
-├── email     VARCHAR(255), not null, unique
-├── password  VARCHAR(255), not null (bcrypt hash)
-└── photo     VARCHAR(255), not null (relative image path)
+The block below creates the tables and inserts the initial categories:
 
-categories
-├── id        INT, primary key
-└── name      VARCHAR(80), not null
+```sql
+CREATE TABLE users(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    photo VARCHAR(255) NOT NULL
+);
 
-recipes
-├── id          INT, primary key
-├── title       VARCHAR(150), not null
-├── description TEXT, not null
-├── category_id INT, foreign key to categories.id
-├── archive     VARCHAR(255), not null (relative image path)
-├── user_id     INT, foreign key to users.id, nullable
-└── created_at  TIMESTAMP
+CREATE TABLE categories(
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(80) NOT NULL
+);
+
+INSERT INTO categories (name) VALUES
+('Breakfast'),
+('Snacks'),
+('Appetizers'),
+('Salads'),
+('Pasta'),
+('Meat'),
+('Chicken'),
+('Fish and Seafood'),
+('Side Dishes'),
+('Vegetarian Dishes'),
+('Vegan Dishes'),
+('Soups and Broths'),
+('Rice and Risotto'),
+('Desserts'),
+('Cakes and Pies'),
+('Sweets'),
+('Breads and Savory Pastries'),
+('Beverages'),
+('Juices and Smoothies'),
+('Healthy Recipes'),
+('Quick Recipes'),
+('Budget-Friendly Recipes'),
+('Brazilian Cuisine'),
+('International Cuisine');
+
+CREATE TABLE recipes (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    title VARCHAR(150) NOT NULL,
+    description TEXT NOT NULL,
+    category_id INT NOT NULL,
+    archive VARCHAR(255) NOT NULL,
+    user_id INT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+    FOREIGN KEY (category_id) REFERENCES categories(id),
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE SET NULL
+);
 ```
 
 When an account is deleted, `user_id` for its recipes is set to `NULL`, preserving the recipes and their images.
@@ -249,11 +282,7 @@ Create the database in MySQL:
 CREATE DATABASE saboria CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ```
 
-Select `saboria` and run [`trabalho3.sql`](trabalho3.sql). After creating the database, the MySQL command-line client can also import it with:
-
-```bash
-mysql -u root -p saboria < trabalho3.sql
-```
+Run the SQL block in the Database section against the `saboria` database. The server checks the connection but does not create the tables automatically.
 
 ### 3. Configure the environment
 

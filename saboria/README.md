@@ -132,37 +132,70 @@ public/
 
 app.js
 server.js
-trabalho3.sql
 ```
 
 ---
 
 ## Banco de dados
 
-O arquivo [`trabalho3.sql`](trabalho3.sql) contém a criação das tabelas e a carga inicial de categorias. O banco utilizado deve ser criado antes de executar o script.
+O banco utilizado pela aplicação é MySQL. O bloco SQL abaixo define as tabelas necessárias e insere as categorias iniciais. A aplicação espera que esse esquema exista e não o cria nem sincroniza automaticamente.
 
-### Tabelas
+### SQL do esquema
 
-```text
-users
-├── id        INT, primary key
-├── name      VARCHAR(100), not null
-├── email     VARCHAR(255), not null, unique
-├── password  VARCHAR(255), not null (bcrypt hash)
-└── photo     VARCHAR(255), not null (relative image path)
+O bloco abaixo cria as tabelas e insere as categorias iniciais:
 
-categories
-├── id        INT, primary key
-└── name      VARCHAR(80), not null
+```sql
+CREATE TABLE users(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    photo VARCHAR(255) NOT NULL
+);
 
-recipes
-├── id          INT, primary key
-├── title       VARCHAR(150), not null
-├── description TEXT, not null
-├── category_id INT, foreign key to categories.id
-├── archive     VARCHAR(255), not null (relative image path)
-├── user_id     INT, foreign key to users.id, nullable
-└── created_at  TIMESTAMP
+CREATE TABLE categories(
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(80) NOT NULL
+);
+
+INSERT INTO categories (name) VALUES
+('Café da manhã'),
+('Lanches'),
+('Entradas'),
+('Saladas'),
+('Massas'),
+('Carnes'),
+('Frango'),
+('Peixes e frutos do mar'),
+('Acompanhamentos'),
+('Pratos vegetarianos'),
+('Pratos veganos'),
+('Sopas e caldos'),
+('Arroz e risotos'),
+('Sobremesas'),
+('Bolos e tortas'),
+('Doces'),
+('Pães e salgados'),
+('Bebidas'),
+('Sucos e vitaminas'),
+('Receitas fitness'),
+('Receitas rápidas'),
+('Receitas econômicas'),
+('Comida brasileira'),
+('Comida internacional');
+
+CREATE TABLE recipes (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    title VARCHAR(150) NOT NULL,
+    description TEXT NOT NULL,
+    category_id INT NOT NULL,
+    archive VARCHAR(255) NOT NULL,
+    user_id INT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+    FOREIGN KEY (category_id) REFERENCES categories(id),
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE SET NULL
+);
 ```
 
 Ao remover uma conta, `user_id` das receitas relacionadas passa a `NULL`, preservando as receitas e suas imagens.
@@ -249,11 +282,7 @@ No MySQL, crie o banco:
 CREATE DATABASE saboria CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ```
 
-Selecione `saboria` e execute [`trabalho3.sql`](trabalho3.sql). Pelo cliente de linha de comando, após criar o banco, também é possível importar com:
-
-```bash
-mysql -u root -p saboria < trabalho3.sql
-```
+Execute o bloco SQL da seção Banco de dados no banco `saboria`. O servidor verifica a conexão, mas não cria as tabelas automaticamente.
 
 ### 3. Configurar ambiente
 
