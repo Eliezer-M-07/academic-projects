@@ -8,7 +8,6 @@ Português | [English](README.en.md)
 ![Express](https://img.shields.io/badge/Express-5-000000?style=flat-square&logo=express&logoColor=white)
 ![MySQL](https://img.shields.io/badge/MySQL-Database-000000?style=flat-square&logo=mysql&logoColor=white)
 ![EJS](https://img.shields.io/badge/Views-EJS-000000?style=flat-square)
-![License](https://img.shields.io/badge/License-ISC-000000?style=flat-square)
 
 Aplicação web para cadastro, consulta e gerenciamento de receitas, desenvolvida com Node.js, Express, MySQL e EJS. O projeto inclui autenticação por sessão, envio de imagens e controle de propriedade das receitas.
 
@@ -328,9 +327,3 @@ npm run css:watch
 | `npm run dev` | Inicia o servidor com Nodemon |
 | `npm run css:build` | Gera o CSS do Tailwind |
 | `npm run css:watch` | Observa alterações e recompila o CSS |
-
----
-
-## Licença
-
-Este projeto está sob a licença ISC, conforme definido em `package.json`.
