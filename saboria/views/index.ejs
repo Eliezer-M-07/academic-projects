@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<%- include('partials/head', { pageTitle: 'Saboria | Receitas' }) %>
+
+  <body class="bg-white font-[Nunito_Sans,sans-serif] text-stone-900 antialiased">
+
+    <%- include('partials/navbar') %>
+      <main>
+        <section class="relative isolate overflow-hidden bg-[#f4f4f1] lg:min-h-[680px]">
+
+          <img src="/images/hero-food.webp" alt="Salada verde em um prato branco sobre fundo claro"
+            class="relative order-first block h-auto w-full object-contain lg:absolute lg:inset-0 lg:-z-20 lg:h-full lg:object-cover lg:object-[70%_center]">
+
+          <div class="px-5 py-10 sm:px-8 sm:py-12 lg:px-12 lg:py-0">
+
+            <div class="mx-auto flex w-full max-w-7xl items-center lg:min-h-[680px]">
+
+              <div class="max-w-xl lg:-translate-y-6">
+
+                <p class="mb-4 text-sm font-semibold text-emerald-800">
+                  Plataforma de compartilhamento de receitas
+                </p>
+
+                <% if (isLoggedIn) { %>
+
+                  <h1
+                    class="max-w-2xl text-5xl font-extrabold leading-[1.04] tracking-tight text-stone-800 sm:text-6xl lg:text-7xl">
+                    Compartilhe suas receitas
+                  </h1>
+
+                  <p class="mt-6 max-w-xl text-base leading-7 text-stone-700">
+                    Cadastre suas receitas e consulte as publicações de outros usuários.
+                  </p>
+
+                  <div class="mt-8 flex flex-nowrap gap-2 sm:gap-4">
+
+                    <a href="/recipes"
+                      class="inline-flex flex-1 items-center justify-center whitespace-nowrap rounded-md bg-emerald-700 px-3 py-3.5 text-xs font-semibold text-white shadow-lg shadow-emerald-950/15 transition hover:-translate-y-0.5 hover:bg-emerald-800 sm:flex-none sm:px-7 sm:text-sm">
+                      Explorar receitas
+                    </a>
+
+                    <a href="/recipes/create"
+                      class="inline-flex flex-1 items-center justify-center whitespace-nowrap rounded-md border border-stone-400 bg-white px-3 py-3.5 text-xs font-semibold text-stone-900 shadow-md shadow-stone-900/10 ring-1 ring-stone-300 transition hover:border-emerald-700 hover:text-emerald-800 sm:flex-none sm:px-7 sm:text-sm">
+                      Publicar receita
+                    </a>
+
+                  </div>
+
+                  <% } else { %>
+
+                    <h1
+                      class="max-w-2xl text-5xl font-extrabold leading-[1.04] tracking-tight text-stone-800 sm:text-6xl lg:text-7xl">
+                      Receitas para o dia a dia
+                    </h1>
+
+                    <p class="mt-6 max-w-xl text-base leading-7 text-stone-700">
+                      Consulte receitas publicadas por outros usuários e crie uma conta para cadastrar suas próprias
+                      receitas.
+                    </p>
+
+                    <div class="mt-8 flex flex-nowrap gap-2 sm:gap-4">
+
+                      <a href="/recipes"
+                        class="inline-flex flex-1 items-center justify-center whitespace-nowrap rounded-md bg-emerald-700 px-3 py-3.5 text-xs font-semibold text-white shadow-lg shadow-emerald-950/15 transition hover:-translate-y-0.5 hover:bg-emerald-800 sm:flex-none sm:px-7 sm:text-sm">
+                        Ver receitas
+                      </a>
+
+                      <a href="/register"
+                        class="inline-flex flex-1 items-center justify-center whitespace-nowrap rounded-md border border-stone-400 bg-white px-3 py-3.5 text-xs font-semibold text-stone-900 shadow-md shadow-stone-900/10 ring-1 ring-stone-300 transition hover:border-emerald-700 hover:text-emerald-800 sm:flex-none sm:px-7 sm:text-sm">
+                        Criar conta
+                      </a>
+
+                    </div>
+
+                    <% } %>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </section>
+
+        <section id="beneficios" class="px-5 py-20 sm:px-8 lg:px-12 lg:py-24">
+
+          <div class="mx-auto max-w-7xl">
+
+            <div class="mx-auto mb-12 max-w-2xl text-center">
+
+              <p class="text-xs font-bold uppercase tracking-[0.2em] text-emerald-800">
+                Como funciona
+              </p>
+
+              <h2 class="mt-3 text-3xl font-extrabold tracking-tight sm:text-4xl">
+                Conheça as funcionalidades
+              </h2>
+
+              <p class="mt-4 leading-7 text-stone-600">
+                Veja como cadastrar, consultar e compartilhar receitas na plataforma.
+              </p>
+
+            </div>
+
+            <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+
+              <article
+                class="rounded-3xl bg-[#f5f7f1] p-7 transition hover:-translate-y-1 hover:shadow-lg hover:shadow-emerald-950/5">
+                <span
+                  class="flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-sm font-bold text-emerald-800">01</span>
+                <h3 class="mt-5 text-lg font-bold">Criar uma conta</h3>
+                <p class="mt-2 text-sm leading-6 text-stone-600">Cadastre-se para ter acesso à publicação de receitas.
+                </p>
+              </article>
+
+              <article
+                class="rounded-3xl bg-[#f5f7f1] p-7 transition hover:-translate-y-1 hover:shadow-lg hover:shadow-emerald-950/5">
+                <span
+                  class="flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-sm font-bold text-emerald-800">02</span>
+                <h3 class="mt-5 text-lg font-bold">Cadastrar receitas</h3>
+                <p class="mt-2 text-sm leading-6 text-stone-600">Informe o título, a descrição, a categoria e uma
+                  imagem.</p>
+              </article>
+
+              <article
+                class="rounded-3xl bg-[#f5f7f1] p-7 transition hover:-translate-y-1 hover:shadow-lg hover:shadow-emerald-950/5">
+                <span
+                  class="flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-sm font-bold text-emerald-800">03</span>
+                <h3 class="mt-5 text-lg font-bold">Consultar receitas</h3>
+                <p class="mt-2 text-sm leading-6 text-stone-600">Acesse as receitas cadastradas por outros usuários.</p>
+              </article>
+
+              <article
+                class="rounded-3xl bg-[#f5f7f1] p-7 transition hover:-translate-y-1 hover:shadow-lg hover:shadow-emerald-950/5">
+                <span
+                  class="flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-sm font-bold text-emerald-800">04</span>
+                <h3 class="mt-5 text-lg font-bold">Compartilhar receitas</h3>
+                <p class="mt-2 text-sm leading-6 text-stone-600">Disponibilize suas receitas para os demais usuários.
+                </p>
+              </article>
+
+            </div>
+
+          </div>
+
+        </section>
+
+        <% if (recipes && recipes.length > 0) { %>
+          <section id="receitas" class="bg-white px-5 pb-24 sm:px-8 lg:px-12">
+
+            <div class="mx-auto max-w-7xl">
+
+              <div class="mb-10 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+
+                <div>
+                  <p class="text-xs font-bold uppercase tracking-[0.2em] text-emerald-800">
+                    Publicações
+                  </p>
+
+                  <h2 class="mt-3 text-3xl font-extrabold tracking-tight sm:text-4xl">
+                    Receitas em destaque
+                  </h2>
+                </div>
+
+                <a href="/recipes" class="text-sm font-semibold text-emerald-800 transition hover:text-emerald-950">
+                  Ver todas as receitas <span aria-hidden="true">→</span>
+                </a>
+
+              </div>
+
+              <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+
+                <% recipes.forEach(recipe => { %>
+                  <%- include('recipes/partials/card', { recipe }) %>
+                <% }) %>
+
+              </div>
+
+            </div>
+
+          </section>
+          <% } %>
+            <section id="sobre" class="bg-[#f3f6ef] px-5 py-20 sm:px-8 lg:px-12 lg:py-24">
+
+              <div class="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2 lg:gap-20">
+
+                <div class="max-w-xl">
+
+                  <p class="text-xs font-bold uppercase tracking-[0.2em] text-emerald-800">
+                    Sobre a plataforma
+                  </p>
+
+                  <h2 class="mt-4 text-3xl font-extrabold leading-tight tracking-tight sm:text-5xl">
+                    Um catálogo de receitas compartilhadas por usuários.
+                  </h2>
+
+                  <p class="mt-6 leading-7 text-stone-600">
+                    O Saboria é uma plataforma onde usuários podem cadastrar, consultar e compartilhar receitas.
+                  </p>
+
+                  <p class="mt-4 leading-7 text-stone-600">
+                    As receitas podem ser organizadas por categoria e acessadas pelos visitantes da plataforma.
+                  </p>
+
+                  <% if (isLoggedIn) { %>
+
+                    <a href="/recipes/create"
+                      class="mt-7 inline-flex rounded-md bg-emerald-700 px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-emerald-900/15 transition hover:-translate-y-0.5 hover:bg-emerald-800">
+                      Cadastrar receita
+                      <span class="ml-2" aria-hidden="true">→</span>
+                    </a>
+
+                    <% } else { %>
+
+                      <a href="/register"
+                        class="mt-7 inline-flex rounded-md border border-emerald-700 px-6 py-3 text-sm font-semibold text-emerald-800 transition hover:bg-emerald-700 hover:text-white">
+                        Criar conta
+                        <span class="ml-2" aria-hidden="true">→</span>
+                      </a>
+
+                      <% } %>
+
+                </div>
+
+                <div class="relative">
+
+                  <img src="/images/home-food.webp" alt="Prato com frutas, queijos e outros ingredientes"
+                    class="h-[360px] w-full rounded-[2rem] object-cover shadow-2xl shadow-emerald-950/10 sm:h-[470px]">
+
+                  <div class="absolute -bottom-5 left-5 rounded-2xl bg-white px-5 py-4 shadow-xl sm:-left-6 sm:px-6">
+                    <p class="text-2xl font-extrabold text-emerald-800">
+                      Saboria
+                    </p>
+
+                    <p class="mt-1 text-xs font-medium text-stone-600">
+                      Cadastro e consulta de receitas
+                    </p>
+                  </div>
+
+                </div>
+
+              </div>
+
+            </section>
+            <section class="px-5 py-20 text-center sm:px-8 lg:px-12">
+
+              <div class="mx-auto max-w-3xl">
+
+                <% if (isLoggedIn) { %>
+
+                  <p class="text-xs font-bold uppercase tracking-[0.2em] text-emerald-800">
+                    Nova publicação
+                  </p>
+
+                  <h2 class="mt-3 text-3xl font-extrabold tracking-tight sm:text-4xl">
+                    Cadastre uma receita
+                  </h2>
+
+                  <p class="mx-auto mt-4 max-w-xl leading-7 text-stone-600">
+                    Preencha as informações e adicione uma imagem para publicar sua receita.
+                  </p>
+
+                  <a href="/recipes/create"
+                    class="mt-7 inline-flex rounded-md bg-emerald-700 px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-emerald-900/15 transition hover:-translate-y-0.5 hover:bg-emerald-800">
+                    Publicar receita
+                    <span class="ml-2" aria-hidden="true">→</span>
+                  </a>
+
+                  <% } else { %>
+
+                    <p class="text-xs font-bold uppercase tracking-[0.2em] text-emerald-800">
+                      Cadastro
+                    </p>
+
+                    <h2 class="mt-3 text-3xl font-extrabold tracking-tight sm:text-4xl">
+                      Cadastre-se no Saboria
+                    </h2>
+
+                    <p class="mx-auto mt-4 max-w-xl leading-7 text-stone-600">
+                      Crie uma conta para cadastrar e compartilhar suas receitas.
+                    </p>
+
+                    <a href="/register"
+                      class="mt-7 inline-flex rounded-md bg-emerald-700 px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-emerald-900/15 transition hover:-translate-y-0.5 hover:bg-emerald-800">
+                      Criar conta
+                      <span class="ml-2" aria-hidden="true">→</span>
+                    </a>
+
+                    <% } %>
+
+              </div>
+
+            </section>
+
+      </main>
+
+      <%- include('partials/footer') %>
+
+  </body>
+
+</html>

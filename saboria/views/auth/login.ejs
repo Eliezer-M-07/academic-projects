@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<%- include('../partials/head', { pageTitle: 'Entrar | Saboria' }) %>
+
+  <body class="bg-white font-[Nunito_Sans,sans-serif] text-stone-900 antialiased">
+    <%- include('../partials/navbar') %>
+
+    <main class="min-h-[calc(100vh-4rem)] lg:min-h-[calc(100vh-4.5625rem)]">
+      <% if (message) { %>
+        <div id="toastMessage" class="fixed top-6 right-3 z-[100] w-[calc(100%-3rem)] max-w-sm
+                      overflow-hidden rounded-2xl border border-emerald-100
+                      bg-white shadow-xl shadow-stone-900/10
+                      transition-all duration-500 opacity-100 translate-x-0" role="status">
+          <div class="flex items-center gap-3 px-4 py-3">
+
+            <div class="flex h-9 w-9 shrink-0 items-center justify-center
+                                rounded-full bg-emerald-50">
+              <svg class="h-5 w-5 text-emerald-700" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+
+            <div class="min-w-0 flex-1">
+              <p class="text-sm font-bold text-stone-900">
+                Tudo certo!
+              </p>
+
+              <p class="mt-0.5 text-xs leading-snug text-stone-500">
+                <%= message %>
+              </p>
+            </div>
+
+          </div>
+
+          <div class="h-1 w-full bg-emerald-50">
+            <div id="toastProgress" class="h-full w-full origin-left bg-emerald-600"></div>
+          </div>
+        </div>
+        <% } %>
+          <div class="grid min-h-[calc(100vh-4rem)] w-full bg-white lg:min-h-[calc(100vh-4.5625rem)] lg:grid-cols-2">
+            <section class="flex items-center justify-center px-6 py-12 sm:px-12 lg:px-16"
+              aria-label="Formulário de login">
+              <div class="w-full max-w-sm">
+                <h1 class="text-3xl font-extrabold tracking-tight sm:text-4xl">Bem-vindo de volta</h1>
+                <p class="mt-2 text-sm leading-6 text-stone-500">Entre na sua conta para acessar suas receitas.</p>
+
+                <form method="post" action="/login" class="mt-8 space-y-5">
+                  <% if (errors?.general) { %>
+                    <div class="mb-5 rounded-lg border border-red-200 bg-red-50 px-4 py-3">
+                      <p class="text-sm font-medium text-red-700">
+                        <%= errors.general %>
+                      </p>
+                    </div>
+                    <% } %>
+                      <div>
+                        <label for="email" class="mb-1.5 block text-sm font-medium text-stone-800">E-mail</label>
+                        <input id="email" name="email" type="email" value="<%= values?.email || '' %>"
+                          autocomplete="email" placeholder="voce@exemplo.com" required
+                          class="w-full rounded-lg border border-stone-200 bg-white px-4 py-3 text-sm outline-none transition placeholder:text-stone-400 focus:border-emerald-700 focus:ring-2 focus:ring-emerald-700/15">
+                      </div>
+                      <div>
+                        <label for="password" class="mb-1.5 block text-sm font-medium text-stone-800">Senha</label>
+                        <input id="password" name="password" type="password" autocomplete="current-password"
+                          placeholder="Digite sua senha" required
+                          class="w-full rounded-lg border border-stone-200 bg-white px-4 py-3 text-sm outline-none transition placeholder:text-stone-400 focus:border-emerald-700 focus:ring-2 focus:ring-emerald-700/15">
+                      </div>
+                      <button type="submit"
+                        class="w-full rounded-lg bg-emerald-800 px-5 py-3.5 text-sm font-semibold text-white transition hover:bg-emerald-900 focus:outline-none focus:ring-2 focus:ring-emerald-700 focus:ring-offset-2">Entrar</button>
+                </form>
+
+                <p class="mt-7 text-center text-sm text-stone-500">Ainda não tem uma conta? <a href="/register"
+                    class="font-semibold text-emerald-800 underline-offset-4 hover:underline">Criar conta</a></p>
+              </div>
+            </section>
+
+            <section class="relative hidden overflow-hidden bg-stone-900 lg:block lg:min-h-[calc(100vh-4.5625rem)]"
+              aria-label="Foto de uma refeição">
+              <img src="/images/login-food.webp" alt="Fatias de rabanada e sobremesa servidas em um prato branco"
+                class="absolute inset-0 h-full w-full object-cover object-center">
+            </section>
+          </div>
+    </main>
+    <script>
+      const toastMessage = document.getElementById('toastMessage');
+      const toastProgress = document.getElementById('toastProgress');
+
+      if (toastMessage) {
+
+        toastProgress.style.transition = 'transform 3s linear';
+        toastProgress.style.transform = 'scaleX(0)';
+
+        setTimeout(() => {
+          toastMessage.classList.add('opacity-0');
+
+          setTimeout(() => {
+            toastMessage.remove();
+          }, 500);
+
+        }, 3000);
+      }
+    </script>
+  </body>
+
+</html>

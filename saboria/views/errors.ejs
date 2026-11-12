@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<%- include('./partials/head', { pageTitle: 'Saboria | Ops! Algo deu errado' }) %>
+
+<body class="bg-white font-[Nunito_Sans,sans-serif] text-stone-900 antialiased">
+  <%- include('./partials/navbar') %>
+
+  <main class="flex min-h-[75vh] items-center justify-center bg-[#f4f4f1] px-5 py-16 sm:px-8">
+    <section class="w-full max-w-2xl text-center">
+      <div class="mx-auto flex h-24 w-24 items-center justify-center rounded-3xl bg-white shadow-lg shadow-emerald-950/5">
+        <svg xmlns="http://www.w3.org/2000/svg"
+          width="42" height="42" viewBox="0 0 24 24"
+          fill="none" stroke="currentColor" stroke-width="1.5"
+          stroke-linecap="round" stroke-linejoin="round"
+          class="text-emerald-700">
+          <path d="M12 9v4"/>
+          <path d="M12 17h.01"/>
+          <path d="M10.3 3.9 1.8 18.2A2 2 0 0 0 3.5 21h17a2 2 0 0 0 1.7-2.8L13.7 3.9a2 2 0 0 0-3.4 0Z"/>
+        </svg>
+      </div>
+
+      <p class="mt-8 text-xs font-bold uppercase tracking-[0.2em] text-emerald-800">
+        Ops! Algo não saiu como esperado
+      </p>
+
+      <h1 class="mt-4 text-4xl font-extrabold tracking-tight text-stone-800 sm:text-5xl">
+        <%= title || 'Não foi possível concluir sua solicitação.' %>
+      </h1>
+
+      <p class="mx-auto mt-6 max-w-lg text-base leading-7 text-stone-600">
+        <%= message || 'Encontramos um problema inesperado. Tente novamente em alguns instantes.' %>
+      </p>
+
+      <div class="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
+        <a href="/"
+          class="inline-flex items-center justify-center rounded-md bg-emerald-700 px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-emerald-950/15 transition hover:-translate-y-0.5 hover:bg-emerald-800">
+          Voltar ao início
+          <span class="ml-2" aria-hidden="true">→</span>
+        </a>
+
+        <button onclick="history.back()"
+          class="inline-flex items-center justify-center rounded-md border border-stone-300 bg-white px-7 py-3.5 text-sm font-semibold text-stone-800 transition hover:border-emerald-700 hover:text-emerald-800">
+          Voltar à página anterior
+        </button>
+      </div>
+
+      <p class="mt-12 text-xs font-medium text-stone-400">
+        Saboria · Compartilhando sabores e receitas.
+      </p>
+    </section>
+  </main>
+
+  <%- include('./partials/footer') %>
+
+</body>
+</html>
