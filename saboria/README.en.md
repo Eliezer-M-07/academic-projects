@@ -8,7 +8,6 @@
 ![Express](https://img.shields.io/badge/Express-5-000000?style=flat-square&logo=express&logoColor=white)
 ![MySQL](https://img.shields.io/badge/MySQL-Database-000000?style=flat-square&logo=mysql&logoColor=white)
 ![EJS](https://img.shields.io/badge/Views-EJS-000000?style=flat-square)
-![License](https://img.shields.io/badge/License-ISC-000000?style=flat-square)
 
 A web application for creating, browsing, and managing recipes, built with Node.js, Express, MySQL, and EJS. The project includes session-based authentication, image uploads, and recipe ownership checks.
 
@@ -328,9 +327,3 @@ npm run css:watch
 | `npm run dev` | Starts the server with Nodemon |
 | `npm run css:build` | Builds the Tailwind stylesheet |
 | `npm run css:watch` | Watches files and rebuilds the stylesheet |
-
----
-
-## License
-
-This project is licensed under the ISC License, as specified in `package.json`.
